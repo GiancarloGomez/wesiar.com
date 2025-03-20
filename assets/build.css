@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+}
+body {
+    background: linear-gradient(180deg, #87CEEB, #FFFFFF);
+    background-size: 400% 400%;
+    animation: gradientShift 15s infinite ease-in-out;
+}
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.animate-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+.animate-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.fade-container {
+    position: relative;
+    height: 2em;
+}
+.fade-text {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+.fade-text.show {
+    opacity: 1;
+}
