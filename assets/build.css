@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+    --app-height: 100%;
+}
+
 @font-face {
     font-family: 'Playfair Display';
     src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
@@ -11,7 +15,7 @@ body {
     background-size: 400% 400%;
     width:100vw;
     height:100vh;
-    overflow: hidden;
+    height: var( — app-height);
     & > div {
         padding: 0 1rem;
     }
@@ -40,6 +44,9 @@ body {
 .fade-container {
     position: relative;
     height: 2em;
+    opacity: 0;
+
+    &.on { opacity: 1;}
 }
 .fade-text {
     position: absolute;
@@ -50,10 +57,12 @@ body {
 .fade-text.show {
     opacity: 1;
 }
-@media only screen and (orientation: landscape) {
+@media (orientation: landscape) and ( max-width:1024px ) {
+    body {
+        overflow: hidden;
+    }
     body > div {
         width: 85%;
-        height: -webkit-fill-available;
     }
 }
 @media ( max-width:550px ){
