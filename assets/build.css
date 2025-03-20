@@ -5,9 +5,10 @@
     src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 }
 body {
+    animation: gradientShift 15s infinite ease-in-out;
     background: linear-gradient(180deg, #87CEEB, #FFFFFF);
     background-size: 400% 400%;
-    animation: gradientShift 15s infinite ease-in-out;
+    width:100%;
 }
 @keyframes gradientShift {
     0% {
@@ -41,4 +42,10 @@ body {
 }
 .fade-text.show {
     opacity: 1;
+}
+@supports(padding:max(0px)) {
+    body {
+        padding-left: min(0vmin, env(safe-area-inset-left));
+        padding-right: min(0vmin, env(safe-area-inset-right));
+    }
 }
