@@ -12,6 +12,19 @@
         }
         body {
             background: linear-gradient(180deg, #87CEEB, #FFFFFF);
+            background-size: 400% 400%;
+            animation: gradientShift 15s infinite ease-in-out;
+        }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         .animate-text {
             opacity: 0;
@@ -22,20 +35,53 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .fade-container {
+            position: relative;
+            height: 2em;
+        }
+        .fade-text {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .fade-text.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="text-black flex items-center justify-center h-screen text-center px-6">
     <div class="max-w-3xl">
-        <h1 class="text-4xl sm:text-6xl font-bold font-serif animate-text">Well-executed spontaneity is always rehearsed.</h1>
-        <p class="mt-4 text-lg sm:text-xl text-gray-700 animate-text">True musical freedom comes from deep preparation and unity.</p>
+        <h1 id="main-heading" class="text-4xl sm:text-6xl font-bold font-serif animate-text">Well-executed spontaneity is always rehearsed.</h1>
+        <div class="fade-container mt-4 text-lg sm:text-xl text-gray-700">
+            <p id="tagline1" class="fade-text">The beauty of the moment is built in the hours unseen.</p>
+            <p id="tagline2" class="fade-text">Unscripted brilliance is the reward of practiced dedication.</p>
+            <p id="tagline3" class="fade-text">Effortless moments are shaped by thoughtful preparation.</p>
+            <p id="tagline4" class="fade-text">Mastery transforms practice into freedom.</p>
+        </div>
     </div>
 
     <script>
+        const taglines = document.querySelectorAll(".fade-text");
+        let index = 0;
+
         document.addEventListener("DOMContentLoaded", function() {
             setTimeout(() => {
-                document.querySelectorAll(".animate-text").forEach(el => el.classList.add("show"));
+                document.getElementById("main-heading").classList.add("show");
+                setTimeout(() => {
+                    taglines[index].classList.add("show");
+                    setTimeout(startTaglineLoop, 5000); // Wait before starting loop
+                }, 1500);
             }, 500);
         });
+
+        function startTaglineLoop() {
+            setInterval(() => {
+                taglines[index].classList.remove("show");
+                index = (index + 1) % taglines.length;
+                taglines[index].classList.add("show");
+            }, 6000); // Change tagline every 6 seconds
+        }
     </script>
 </body>
 </html>
