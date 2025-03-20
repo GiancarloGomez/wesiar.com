@@ -11,7 +11,6 @@ body {
     background-size: 400% 400%;
     width:100vw;
     height:100vh;
-    height: -webkit-fill-available;
     overflow: hidden;
     & > div {
         padding: 0 1rem;
@@ -52,7 +51,10 @@ body {
     opacity: 1;
 }
 @media only screen and (orientation: landscape) {
-    body > div { width: 85%; }
+    body > div {
+        width: 85%;
+        height: -webkit-fill-available;
+    }
 }
 @media ( max-width:550px ){
     .fade-container {
