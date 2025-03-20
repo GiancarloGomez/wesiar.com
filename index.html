@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well-Executed Spontaneity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'Playfair Display';
+            src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+        }
+        body {
+            background: linear-gradient(180deg, #87CEEB, #FFFFFF);
+        }
+        .animate-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        }
+        .animate-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-black flex items-center justify-center h-screen text-center px-6">
+    <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-6xl font-bold font-serif animate-text">Well-executed spontaneity is always rehearsed.</h1>
+        <p class="mt-4 text-lg sm:text-xl text-gray-700 animate-text">True musical freedom comes from deep preparation and unity.</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.querySelectorAll(".animate-text").forEach(el => el.classList.add("show"));
+            }, 500);
+        });
+    </script>
+</body>
+</html>
