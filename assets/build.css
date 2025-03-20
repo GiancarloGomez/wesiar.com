@@ -44,11 +44,7 @@ body {
     opacity: 1;
 }
 @media only screen and (orientation: landscape) {
-    body {
-        & > div {
-            width: 90%;
-        }
-    }
+    body > div { width: 90%; }
 }
 @supports(padding:max(0px)) {
     body {
